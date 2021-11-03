@@ -1,6 +1,10 @@
 import pygame, pymunk
 import pymunk.pygame_util
 
+#Create function here called create_arrow():
+    #Cut and paste arrow's body, shape, density and position.
+    #return arrow's body and shape.
+
 pygame.init()
 
 height = 600
@@ -21,19 +25,15 @@ target_shape = pymunk.Poly(target_body, vs_rect)
 target_body.position = 600,400
 space.add(target_body, target_shape)
 
-bow_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
-bow_shape = pymunk.Circle(bow_body, 25)
-bow_shape.sensor = True
-bow_shape.color = (255, 50, 50, 255)
-bow_body.position = 100, 140
-space.add(bow_body, bow_shape)
-
+#remove the next 5 lines and call create_arrow() and assign it to arrow_body, arrow_shape.
 vs = [(-80, 0), (0, 2), (10, 0), (0, -2)]
 arrow_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
 arrow_shape = pymunk.Poly(arrow_body, vs)
 arrow_shape.density = 0.1
 arrow_body.position = bow_body.position
 space.add(arrow_body, arrow_shape)
+
+#Create an empty list called flying_arrows
 
 while True:
     screen.fill((255,255,255))
@@ -44,6 +44,10 @@ while True:
         
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 arrow_body.body_type = pymunk.Body.DYNAMIC
+                
+                #add arrow_body to the flying_arrows list using .append().
+                #call create_arrow() and assign it to arrow_body, arrow_shape.
+                #add arrow_body and arrow_shape to the space using space.add()
                 
     space.debug_draw(draw_options)
     
